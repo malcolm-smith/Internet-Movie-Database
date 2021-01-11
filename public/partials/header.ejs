@@ -1,0 +1,31 @@
+<div class="topBar">
+    <button id = "home" type="button" onclick="home()">
+        Home
+    </button>
+    <% if(signedin) { %>
+        <button id = "profile-page" type="button" onclick="profilePage()">
+            Profile Page
+        </button>
+    <% } %>
+    <% if(signedin && movie !== null && false) { %>
+        <button id = "edit-movie" type="button" onclick="editMovie('<%= movie.imdbID %>')">
+            Edit Movie
+        </button>
+    <% } %>
+    <span id="title-bar"> C2MD </span>
+    <% if(contributor) { %>
+        <button id = "create-movie" type="button" onclick="createMoviePage()">
+            Create Movie
+        </button>
+        <button id = "create-person" type="button" onclick="createPersonPage()">
+            Create Person
+        </button>
+    <% } %>
+    <button id = "sign-in" type="button" onclick="signInPage()">
+        <% if(signedin) { %>
+            Sign Out
+        <%} else { %>
+            Sign In
+        <% } %>
+    </button>
+</div>

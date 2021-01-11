@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <title>
+        Comp 2406 Person
+    </title>
+    <head>
+        <%- include('public/partials/head'); %>
+    </head>
+    <body id="personpage" class="pageview">
+        <header>
+            <%- include('public/partials/header'); %>
+        </header>
+
+        <div class="row">
+            <div class="leftcolumn">
+                <div class="card">
+                    <div class="personimage"></div>
+                    <p class="bigtext"><%= name %></p>
+                    <% if(signedin) { %>
+                        <p class="littletext">
+                            Follow
+                        </p>
+                        <p class="littletext">
+                            <input type="checkbox" id="personFollowage" <% if(isFollowing) { %> checked="checked" <% } %> onclick="updatePersonFollowage('<%= name %>')">
+                        </p>
+                    <% } %>
+                </div>
+            </div>
+            <div class="rightcolumn">
+                <div class="column">
+                    <div class="card">
+                        <p class="bigtext">Filmography</p>
+                        <p class="littletext">
+                            <% if(movies[0]) { %>
+                                <% for(let i in movies) { %>
+                                    <a href="<%="/movie/" + movies[i].imdbID %>"> <%= movies[i].Title %> </a> <br>
+                            <% } } %>
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <p class="bigtext">Frequent Collaborators</p>
+                        <p class="littletext">
+                            <% if(collaborators[0]) { %>
+                                <% for(let i in collaborators) { %>
+                                    <a href="<%="/person/" + collaborators[i][0] %>"> <%= collaborators[i][0] %> </a> <br>
+                            <% } } %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
